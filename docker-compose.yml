@@ -1,0 +1,60 @@
+# AERIS — Backend API + MongoDB (+ GUI ดูข้อมูล/Index)
+#   เว็บ + API     : http://localhost:3000            (หน้าเว็บ AERIS, API อยู่ที่ /api/...)
+#   MongoDB        : localhost:27017                   (database: hvacr_db)
+#   Mongo Express  : http://localhost:8081            (GUI ดู collection / index — user: admin  pass: pass)
+#
+# ก่อนรันครั้งแรก: copy .env.example → .env แล้วแก้รหัสแอดมิน / JWT_SECRET
+# เริ่มใช้งาน   :  docker compose up -d --build
+# ดู log seed   :  docker compose logs -f api        (รอจนเห็น "✅ ระบบพร้อมใช้งาน")
+# รีเซ็ตข้อมูล  :  docker compose down -v
+
+services:
+  # บริการ Backend API (เสิร์ฟหน้า index.html ด้วย)
+  api:
+    build: .                              # ใช้ไฟล์ Dockerfile ในโฟลเดอร์นี้
+    container_name: hvacr-api
+    ports:
+      - "3000:3000"
+    environment:
+      - PORT=3000
+      - MONGO_URI=mongodb://db:27017/hvacr_db
+      - JWT_SECRET=${JWT_SECRET:-change_me_in_env_file}
+      - ADMIN_ACCOUNTS=${ADMIN_ACCOUNTS:-admin:admin1234}
+      - ORDER_SEED_COUNT=${ORDER_SEED_COUNT:-200000}   # จำนวน orders จำลองสำหรับทดสอบ index
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: unless-stopped
+
+  # บริการฐานข้อมูล MongoDB
+  db:
+    image: mongo:7
+    container_name: hvacr-db
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+    healthcheck:
+      test: ["CMD", "mongosh", "--quiet", "--eval", "db.adminCommand('ping').ok"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+    restart: unless-stopped
+
+  # GUI ดูข้อมูลและ index ใน MongoDB (เทียบได้กับ adminer ใน Indexing Lab)
+  mongo-express:
+    image: mongo-express:latest
+    container_name: hvacr-mongo-express
+    ports:
+      - "8081:8081"
+    environment:
+      - ME_CONFIG_MONGODB_URL=mongodb://db:27017/
+      - ME_CONFIG_BASICAUTH_USERNAME=admin
+      - ME_CONFIG_BASICAUTH_PASSWORD=pass
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: unless-stopped
+
+volumes:
+  mongo-data:
