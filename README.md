@@ -2,7 +2,7 @@
 
 AERIS เป็นแพลตฟอร์ม E-Commerce และบริการเครื่องปรับอากาศ (HVACR) มีระบบจำลองห้อง 3D (Three.js) ช่วยลูกค้าหาขนาด BTU ที่เหมาะสมแบบเรียลไทม์ และมี Backend (Node.js + Express + MongoDB) ดูแลการยืนยันตัวตน สินค้า การนัดหมายบริการ และระบบ **Database Indexing** สำหรับเทียบประสิทธิภาพการค้นหาข้อมูล
 
-🌐 **หน้าเว็บ:** https://67160235.github.io/newww/
+🌐 **หน้าเว็บ:** https://67160235.github.io/air.com/
 🔌 **Backend API:** https://hvacr-backend-vkua.onrender.com/api/health
 
 ---
