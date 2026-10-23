@@ -403,7 +403,7 @@
             <div class="max-w-[1200px] mx-auto flex items-center justify-between">
                 <div class="w-1/2 pr-10">
                     <span class="inline-flex items-center gap-2 bg-sky-100 text-[#006A9C] text-xs font-bold px-4 py-2 rounded-full mb-6 font-title">
-                        🔧 บริการครบวงจร
+                         บริการครบวงจร
                     </span>
                     <h2 class="text-4xl font-bold font-title text-[#0B1B32] leading-tight mb-4">ติดตั้ง ล้าง ซ่อม ดูแลตลอดอายุการใช้งาน</h2>
                     <p class="text-slate-500 text-lg leading-relaxed">ทีมช่างผู้เชี่ยวชาญประจำทั่วประเทศ ติดตั้งมาตรฐานโรงงาน ล้างแอร์รายปี และบริการซ่อมด่วน พร้อมรับประกันคอมเพรสเซอร์นาน 10 ปี</p>
@@ -422,7 +422,7 @@
             <h1 class="text-[40px] font-bold font-title text-[#0B1B32] mb-4">สินค้าทั้งหมด</h1>
             <p class="text-slate-500 text-lg mb-8">เครื่องปรับอากาศอินเวอร์เตอร์ทุกขนาด ตั้งแต่ห้องนอนเล็กจนถึงพื้นที่เชิงพาณิชย์ ทุกรุ่นราคารวมติดตั้งมาตรฐานแล้ว</p>
             <button onclick="switchView('simulator')" class="bg-[#006A9C] hover:bg-[#00527A] text-white font-semibold py-3.5 px-6 rounded-xl flex items-center gap-2 transition-all font-title shadow-md">
-                <span class="text-lg">📦</span> ไม่แน่ใจขนาด? จำลองห้อง 3D คำนวณ BTU
+                <span class="text-lg"></span> ไม่แน่ใจขนาด? จำลองห้อง 3D คำนวณ BTU
             </button>
         </div>
         <section class="bg-white pt-8 pb-20 px-8 rounded-t-[40px] shadow-[0_-10px_40px_rgba(0,0,0,0.03)] border-t border-slate-100">
@@ -778,7 +778,7 @@
     <!-- ================= [ใหม่] VIEW: INDEXING (เฉพาะผู้ดูแลระบบ) ================= -->
     <main id="view-indexing" class="view-section bg-[#F4F9FB]">
         <div class="pt-16 pb-20 px-8 max-w-[1200px] mx-auto">
-            <span class="inline-flex items-center gap-2 bg-sky-100 text-[#006A9C] text-xs font-bold px-4 py-2 rounded-full mb-5 font-title">🔑 Database Indexing · MongoDB</span>
+            <span class="inline-flex items-center gap-2 bg-sky-100 text-[#006A9C] text-xs font-bold px-4 py-2 rounded-full mb-5 font-title"> Database Indexing · MongoDB</span>
             <h1 class="text-[40px] font-bold font-title text-[#0B1B32] mb-3">เทียบความเร็ว มี Index vs ไม่มี Index</h1>
             <p class="text-slate-500 text-base max-w-3xl mb-4">รัน query เดียวกันบนข้อมูลการสั่งซื้อจำลอง 2 แบบ — แบบให้ MongoDB ใช้ index ตามปกติ และแบบบังคับอ่านทุก document (<code class="bg-slate-100 px-1.5 rounded">hint({$natural:1})</code> ≈ Seq Scan) แล้วเทียบผลจาก <code class="bg-slate-100 px-1.5 rounded">explain("executionStats")</code></p>
             <p class="text-xs text-slate-400 mb-10">Backend: <span id="ix-api-base" class="font-mono"></span> · <span id="ix-orders-count">–</span></p>
